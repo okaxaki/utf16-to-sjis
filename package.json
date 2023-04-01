@@ -1,7 +1,7 @@
 {
   "name": "utf16-to-sjis",
   "version": "1.0.0",
-  "description": "A tiny UTF-16 to Shift-JIS (CP932) converter.",
+  "description": "Tiny UTF-16 to Shift-JIS (CP932) converter.",
   "main": "dist/index.js",
   "files": [
     "README.md",
@@ -26,5 +26,9 @@
     "prettier": "^2.8.7",
     "rimraf": "^4.4.1",
     "typescript": "^4.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okaxaki/utf16-to-sjis"
   }
 }
