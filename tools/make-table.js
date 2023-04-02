@@ -14,13 +14,13 @@ for (let i = 0; i < rows.length; i++) {
     throw new Error(`Charcode ${_toHex(row[0], 4)} is not acceptable.`);
   }
 
-  const key = String.fromCharCode(row[0]);
+  const ch = String.fromCharCode(row[0]);
   const valDiff = row[1] - lastVal;
   if (valDiff == 1) {
-    items.push(key);
+    items.push(ch);
   } else {
     const val = _toHex(row[1], 4);
-    items.push(`\n${key}${val}`);
+    items.push(`\n${val}${ch}`);
   }
   lastVal = row[1];
 }
