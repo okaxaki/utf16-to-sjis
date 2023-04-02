@@ -1,4 +1,4 @@
-# utf16-to-sjis
+# utf16-to-sjis [![npm version](https://badge.fury.io/js/utf16-to-sjis.svg)](https://badge.fury.io/js/utf16-to-sjis)
 A small UTF-16 to Shift-JIS converter. 17KB if .gz compressed.
 
 This library only supports Japanese characters in BMP (U+0000 to U+FFFF) because there are no characters in SMP that should be converted to Shift-JIS.
