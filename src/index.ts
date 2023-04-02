@@ -5,7 +5,7 @@ export function convert(data: Uint16Array | string): Uint8Array {
   if (typeof data == "string") {
     let cps = [];
     for (let i = 0; i < data.length; i++) {
-      cps.push(data.codePointAt(i));
+      cps.push(data.charCodeAt(i));
     }
     arr = cps;
   } else {
@@ -18,7 +18,16 @@ export function convert(data: Uint16Array | string): Uint8Array {
   for (let i = 0; i < arr.length; i++) {
     const code = arr[i];
     if (code != null) {
-      const ch = UTF16_TO_SJIS[code];
+      let ch;
+      
+      if (code < 0x80) {
+        ch = code & 0x7f;
+      } else if (0xff61 <= code && code <= 0xff9f) {
+        ch = code - (0xfec0); // map 0xff61...0xff9f to hankaku kana 0xa1...0xdf.
+      } else {
+        ch = UTF16_TO_SJIS[code];
+      }
+
       if (ch != null) {
         if (ch < 0x100) {
           dv.setUint8(wp++, ch);

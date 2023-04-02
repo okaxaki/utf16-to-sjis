@@ -12,6 +12,7 @@
     "test": "jest",
     "prepare": "npm run clean && npm run build",
     "clean": "rimraf dist",
+    "build:table": "node tools/make-table.js > src/g/data.ts",
     "build": "tsc"
   },
   "author": "Mitsutaka Okazaki",
