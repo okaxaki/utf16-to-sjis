@@ -1,17 +1,31 @@
-const { UTF16_TO_SJIS } = require("./table-def.js");
+const rows = require("./table-def.js");
 
 function _toHex(value) {
-  const hex = ('000' + value.toString(16));
-  return hex.slice(hex.length - 4);
+  return value.toString(16);
 }
 
 const items = [];
-UTF16_TO_SJIS.forEach((key, value, map) => {
-  items.push(`${String.fromCharCode(value)}${_toHex(key)}`);
-});
+let lastVal = 0;
+
+for (let i = 0; i < rows.length; i++) {
+  const row = rows[i];
+
+  if (row[0] < 0x80) {
+    throw new Error(`Charcode ${_toHex(row[0], 4)} is not acceptable.`);
+  }
+
+  const key = String.fromCharCode(row[0]);
+  const valDiff = row[1] - lastVal;
+  if (valDiff == 1) {
+    items.push(key);
+  } else {
+    const val = _toHex(row[1], 4);
+    items.push(`\n${key}${val}`);
+  }
+  lastVal = row[1];
+}
 
 console.log(`/* Do not edit. This is genarated from ../tools/make-table.js */
-const _data=\`${items.join('')}\`;
+const _data=\`${items.join("")}\`;
 export const data = _data;
 `);
-

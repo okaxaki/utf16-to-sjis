@@ -1,4 +1,4 @@
-module.exports.UTF16_TO_SJIS = new Map([
+module.exports = [
   [0x3000, 0x8140], // IDEOGRAPHIC SPACE
   [0x3001, 0x8141], // IDEOGRAPHIC COMMA
   [0x3002, 0x8142], // IDEOGRAPHIC FULL STOP
@@ -7723,4 +7723,4 @@ module.exports.UTF16_TO_SJIS = new Map([
   //   [0xfa2d,0xfc49], // CJK COMPATIBILITY IDEOGRAPH
   //   [0x9e19,0xfc4a], // CJK UNIFIED IDEOGRAPH
   //   [0x9ed1,0xfc4b], // CJK UNIFIED IDEOGRAPH
-]);
+];
